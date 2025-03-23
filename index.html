@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giveaway Agenda - March 23, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('assets/logo_monogram.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .promo-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .time-badge {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-weight: 600;
+        }
+
+        .raffle {
+            background-color: #e74c3c;
+        }
+
+        .referral {
+            background-color: #e74c3c;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .promo-title {
+            font-size: 1.2rem;
+            margin-bottom: 0px;
+            color: #34495e;
+        }
+
+        .promo-description {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .qualification {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px 0;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+
+        .subtitle2 {
+            font-size: 18px;
+        }
+
+        @media (min-width: 800px) {
+            .promo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/logo_main.png" alt="Company Logo" class="logo">
+            <h1>Giveaway Extravaganza!</h1>
+            <p class="subtitle">March 23, 2025</p>
+            <p class="subtitle subtitle2">Don't miss your chance to win amazing prizes</p>
+        </header>
+
+        <div class="promo-grid">
+            <!-- 11 AM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=indian-summer'">
+                <div class="card-image"
+                    style="background-image: url('https://indiansummer.lk/wp-content/uploads/2023/01/dsc_0565-2048x1365-1-980x653.jpg.webp');">
+                    <span class="time-badge referral">11:00 AM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Indian Summer Packages</h2>
+                    <p class="promo-description">10 prizes worth Rs 2,000 each up for grabs!</p>
+                    <p class="qualification">Qualify by referring app to 10 friends</p>
+                </div>
+            </div>
+
+            <!-- 12 Noon -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=villa-wadduwa'">
+                <div class="card-image"
+                    style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/148531143.jpg?k=bd213cdcdd8f445eba7589e706c9969b0b5505008de5e1753efc8a2fc9ce5603&o=&hp=1');">
+                    <span class="time-badge referral">12:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">One-Day Outing to Villa Wadduwa</h2>
+                    <p class="promo-description">Enjoy a luxurious day at this beautiful villa!</p>
+                    <p class="qualification">Qualify by referring app to 20 new users</p>
+                </div>
+            </div>
+
+            <!-- 1 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=pine-tree-1'">
+                <div class="card-image" style="background-image: url('assets/image.jpg');">
+                    <span class="time-badge referral">1:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Adventure Package at Pine Tree</h2>
+                    <p class="promo-description">Experience thrilling adventures in nature!</p>
+                    <p class="qualification">Qualify by referring app to 20 users</p>
+                </div>
+            </div>
+
+            <!-- 2 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=thailand'">
+                <div class="card-image"
+                    style="background-image: url('https://t4.ftcdn.net/jpg/00/82/51/39/360_F_82513951_zG8t1O1qY4rAWXh7gr4qbRKrxmfK9rYz.jpg');">
+                    <span class="time-badge raffle">2:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Holiday to Thailand</h2>
+                    <p class="promo-description">Win a dream vacation to Thailand!</p>
+                    <p class="qualification">Raffle Draw - Everyone can participate</p>
+                </div>
+            </div>
+
+            <!-- 5 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=malaysia'">
+                <div class="card-image"
+                    style="background-image: url('https://images.pexels.com/photos/67559/kuala-lumpur-petronas-twin-towers-malaysia-klcc-67559.jpeg?cs=srgb&dl=pexels-pixabay-67559.jpg&fm=jpg');">
+                    <span class="time-badge raffle">5:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Holiday to Malaysia</h2>
+                    <p class="promo-description">Win an exciting trip to Malaysia!</p>
+                    <p class="qualification">Raffle Draw - Everyone can participate</p>
+                </div>
+            </div>
+
+            <!-- 6 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=villa-induruwa'">
+                <div class="card-image"
+                    style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/161121094.jpg?k=48d1cb3c838912c6dee7ef0215862eae17a2fd346a829422293ee0a46a2e47c0&o=&hp=1');">
+                    <span class="time-badge referral">6:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">One-Day at Villa 700 Induruwa</h2>
+                    <p class="promo-description">Relax at this gorgeous beachside villa!</p>
+                    <p class="qualification">Qualify by referring app to 20 people</p>
+                </div>
+            </div>
+
+            <!-- 7 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=pine-tree-2'">
+                <div class="card-image" style="background-image: url('assets/image.jpg');">
+                    <span class="time-badge referral">7:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Adventure Package at Pine Tree</h2>
+                    <p class="promo-description">Second chance to win an adventure package!</p>
+                    <p class="qualification">Qualify by referring app to 20 users</p>
+                </div>
+            </div>
+
+            <!-- 8 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=itc-colombo'">
+                <div class="card-image"
+                    style="background-image: url('https://propertyguide-store.s3.ap-southeast-1.amazonaws.com/ikman/ITC_Ratnadipa_d17b4e8ccd.jpg');">
+                    <span class="time-badge raffle">8:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">One Night at ITC Colombo</h2>
+                    <p class="promo-description">Enjoy luxury at its finest in Colombo!</p>
+                    <p class="qualification">Raffle Draw - Everyone can participate</p>
+                </div>
+            </div>
+
+            <!-- 9 PM -->
+            <div class="promo-card" onclick="window.location.href='detail.html?promo=dubai'">
+                <div class="card-image"
+                    style="background-image: url('https://wallpapercat.com/w/full/0/6/9/274793-2560x1600-desktop-hd-dubai-background-image.jpg');">
+                    <span class="time-badge raffle">9:00 PM</span>
+                </div>
+                <div class="card-content">
+                    <h2 class="promo-title">Holiday to Dubai</h2>
+                    <p class="promo-description">Win a spectacular trip to Dubai!</p>
+                    <p class="qualification">Raffle Draw - Everyone can participate</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
