@@ -295,10 +295,6 @@
             <button id="wheel3000Btn" class="wheel-selector-btn">LKR 3000 Wheel</button>
         </div>
 
-        <div class="wheel-info" id="wheel-info">
-            <p>Spin to win vouchers up to LKR 1000! Prizes include LKR 500 and other exciting amounts.</p>
-        </div>
-
         <div class="wheel-container">
             <div class="marker"></div>
             <canvas id="canvas" width="380" height="380">
@@ -357,39 +353,34 @@
                     callbackFinished: alertPrize
                 },
                 segments: [
-                    { fillStyle: '#e74c3c', text: 'No Chance' },
-                    { fillStyle: '#f1c40f', text: 'LKR 500' },
-                    { fillStyle: '#3498db', text: 'Spin Again' },
+                    { fillStyle: '#E74C3C', text: 'No Chance' },     // Red
+                    { fillStyle: '#F1C40F', text: 'LKR 500' },       // Yellow
+                    { fillStyle: '#E67E22', text: 'LKR 1000' },      // Orange
+                    { fillStyle: '#3498DB', text: 'Spin Again' },    // Blue
+                    { fillStyle: '#9B59B6', text: 'LKR 250' },       // Purple
+                    { fillStyle: '#27AE60', text: 'LKR 100' },       // Green
 
-                    { fillStyle: '#e67e22', text: 'LKR 1000' },
-
-                    { fillStyle: '#9b59b6', text: 'Spin Again' },
-                    { fillStyle: '#2ecc71', text: 'LKR 500' }
 
                 ]
             });
 
             wheel3000 = new Winwheel({
                 canvasId: 'canvas',
-                numSegments: 7,
+                numSegments: 6,
                 outerRadius: 180,
                 animation: {
                     type: 'spinToStop',
                     duration: 4,
-                    spins: 8,
+                    spins: 10,
                     callbackFinished: alertPrize
                 },
                 segments: [
-                    { fillStyle: '#e74c3c', text: 'No Chance' },
-                    { fillStyle: '#f1c40f', text: 'LKR 500' },
-
-                    { fillStyle: '#e67e22', text: 'LKR 1000' },
-                    { fillStyle: '#3498db', text: 'Spin Again' },
-                    { fillStyle: '#2ecc71', text: 'LKR 2000' },
-
-
-                    { fillStyle: '#3498db', text: 'Spin Again' },
-                    { fillStyle: '#9b59b6', text: 'LKR 3000' },
+                    { fillStyle: '#E74C3C', text: 'No Chance' },     // Red
+                    { fillStyle: '#F1C40F', text: 'LKR 500' },       // Yellow
+                    { fillStyle: '#E67E22', text: 'LKR 1000' },      // Orange
+                    { fillStyle: '#3498DB', text: 'Spin Again' },    // Blue
+                    { fillStyle: '#27AE60', text: 'LKR 2000' },      // Green
+                    { fillStyle: '#8E44AD', text: 'LKR 3000' }       // Dark Purple
                 ]
             });
 
