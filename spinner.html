@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prize Spinner Wheel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+
+        }
+
+        .logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin: 30px auto;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        .marker {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            z-index: 2;
+        }
+
+        .marker:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid #e74c3c;
+        }
+
+        #canvas {
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .spin-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 32px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.5);
+        }
+
+        .spin-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 75, 43, 0.7);
+        }
+
+        .spin-button:active {
+            transform: translateY(1px);
+        }
+
+        .spin-button:disabled {
+            background: linear-gradient(to right, #bdc3c7, #95a5a6);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .wheel-type-selector {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .wheel-selector-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: none;
+            background-color: #ecf0f1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .wheel-selector-btn:first-child {
+            border-radius: 50px 0 0 50px;
+        }
+
+        .wheel-selector-btn:last-child {
+            border-radius: 0 50px 50px 0;
+        }
+
+        .wheel-selector-btn.active {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.7);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .popup-close:hover {
+            color: #e74c3c;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .show-popup {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .show-popup .popup-content {
+            transform: scale(1);
+        }
+
+        #prize-value {
+            font-size: 3.5rem;
+            color: #e74c3c;
+            margin: 20px 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #fff6f6 0%, #ffe6e6 100%);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 15px;
+            background-color: #f1c40f;
+            animation: fall 5s ease-out infinite;
+            z-index: 99;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .wheel-info {
+            text-align: center;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .animated-win {
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="./assets/logo_main.png" alt="Prize Spinner" class="logo">
+            <h1>Voucher Spinner Wheel</h1>
+            <p>Spin the wheel to win amazing vouchers!</p>
+        </header>
+
+        <div class="wheel-type-selector">
+            <button id="wheel1000Btn" class="wheel-selector-btn active">LKR 1000 Wheel</button>
+            <button id="wheel3000Btn" class="wheel-selector-btn">LKR 3000 Wheel</button>
+        </div>
+
+        <div class="wheel-info" id="wheel-info">
+            <p>Spin to win vouchers up to LKR 1000! Prizes include LKR 500 and other exciting amounts.</p>
+        </div>
+
+        <div class="wheel-container">
+            <div class="marker"></div>
+            <canvas id="canvas" width="380" height="380">
+                Canvas not supported, use another browser.
+            </canvas>
+        </div>
+
+        <button id="spin-button" class="spin-button">SPIN TO WIN</button>
+
+        <!-- Win Popup -->
+        <div class="popup" id="win-popup">
+            <div class="popup-content">
+                <span class="popup-close" id="popup-close">&times;</span>
+                <h2>Congratulations!</h2>
+                <div id="prize-value">LKR 1000</div>
+                <p>You've won a voucher worth the amount above!</p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">The voucher code has been sent to your registered email.
+                </p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Prize Spinner Wheel. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="./js/Winwheel.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+    <script>
+        const spinButton = document.getElementById('spin-button');
+        const wheel1000Btn = document.getElementById('wheel1000Btn');
+        const wheel3000Btn = document.getElementById('wheel3000Btn');
+        const winPopup = document.getElementById('win-popup');
+        const popupClose = document.getElementById('popup-close');
+        const prizeValue = document.getElementById('prize-value');
+
+        let state = {
+            currentWheel: '1000',
+            isSpinning: false,
+            referrals: 0
+        };
+
+        let wheel1000, wheel3000, currentWheel;
+
+        function createWheels() {
+            wheel1000 = new Winwheel({
+                canvasId: 'canvas',
+                numSegments: 6,
+                outerRadius: 180,
+                animation: {
+                    type: 'spinToStop',
+                    duration: 4,
+                    spins: 7,
+                    callbackFinished: alertPrize
+                },
+                segments: [
+                    { fillStyle: '#e74c3c', text: 'No Chance' },
+                    { fillStyle: '#f1c40f', text: 'LKR 500' },
+                    { fillStyle: '#3498db', text: 'Spin Again' },
+
+                    { fillStyle: '#e67e22', text: 'LKR 1000' },
+
+                    { fillStyle: '#9b59b6', text: 'Spin Again' },
+                    { fillStyle: '#2ecc71', text: 'LKR 500' }
+
+                ]
+            });
+
+            wheel3000 = new Winwheel({
+                canvasId: 'canvas',
+                numSegments: 7,
+                outerRadius: 180,
+                animation: {
+                    type: 'spinToStop',
+                    duration: 4,
+                    spins: 8,
+                    callbackFinished: alertPrize
+                },
+                segments: [
+                    { fillStyle: '#e74c3c', text: 'No Chance' },
+                    { fillStyle: '#f1c40f', text: 'LKR 500' },
+
+                    { fillStyle: '#e67e22', text: 'LKR 1000' },
+                    { fillStyle: '#3498db', text: 'Spin Again' },
+                    { fillStyle: '#2ecc71', text: 'LKR 2000' },
+
+
+                    { fillStyle: '#3498db', text: 'Spin Again' },
+                    { fillStyle: '#9b59b6', text: 'LKR 3000' },
+                ]
+            });
+
+            currentWheel = wheel1000;
+            currentWheel.draw();
+        }
+
+        function alertPrize(indicatedSegment) {
+            prizeValue.textContent = indicatedSegment.text;
+            winPopup.classList.add('show');
+
+            setTimeout(() => {
+                spinButton.disabled = false;
+                state.isSpinning = false;
+            }, 1000);
+        }
+
+        function handleSpin() {
+            if (state.isSpinning) return;
+            spinButton.disabled = true;
+            state.isSpinning = true;
+            spinButton.textContent = "Spin to Win";
+
+            if (state.currentWheel === '1000') {
+                wheel1000.stopAnimation(false);
+                wheel1000.rotationAngle = 0;
+                wheel1000.draw();
+                wheel1000.startAnimation();
+            } else {
+                wheel3000.stopAnimation(false);
+                wheel3000.rotationAngle = 0;
+                wheel3000.draw();
+                wheel3000.startAnimation();
+            }
+        }
+
+        function switchWheel(wheelType) {
+            if (state.isSpinning) return;
+
+
+
+            state.currentWheel = wheelType;
+            if (wheelType === '1000') {
+                wheel1000Btn.classList.add('active');
+                wheel3000Btn.classList.remove('active');
+                currentWheel = wheel1000;
+            } else {
+                wheel1000Btn.classList.remove('active');
+                wheel3000Btn.classList.add('active');
+                currentWheel = wheel3000;
+            }
+
+            spinButton.textContent = "SPIN TO WIN";
+            currentWheel.draw();
+        }
+
+        function closePopup() {
+            winPopup.classList.remove('show');
+        }
+
+        window.onload = function () {
+            createWheels();
+        };
+
+        spinButton.addEventListener('click', handleSpin);
+        wheel1000Btn.addEventListener('click', () => switchWheel('1000'));
+        wheel3000Btn.addEventListener('click', () => switchWheel('3000'));
+        popupClose.addEventListener('click', closePopup);
+    </script>
+
+</body>
+
+</html>
