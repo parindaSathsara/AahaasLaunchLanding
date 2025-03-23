@@ -270,6 +270,58 @@
             animation: pulse 1s infinite alternate;
         }
 
+
+
+
+
+
+        .reward-condition {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .reward-condition h4 {
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .reward-condition p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .reward-condition ul {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .reward-condition ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .reward-condition ul li::before {
+            content: "✔️";
+            color: #2ecc71;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .reward-condition {
+                padding: 15px;
+            }
+        }
+
+
         @keyframes pulse {
             from {
                 transform: scale(1);
@@ -286,14 +338,17 @@
     <div class="container">
         <header>
             <img src="./assets/logo_main.png" alt="Prize Spinner" class="logo">
-            <h1>Voucher Spinner Wheel</h1>
-            <p>Spin the wheel to win amazing vouchers!</p>
+
         </header>
 
         <div class="wheel-type-selector">
             <button id="wheel1000Btn" class="wheel-selector-btn active">LKR 1000 Wheel</button>
             <button id="wheel3000Btn" class="wheel-selector-btn">LKR 3000 Wheel</button>
         </div>
+
+
+
+
 
         <div class="wheel-container">
             <div class="marker"></div>
@@ -302,7 +357,54 @@
             </canvas>
         </div>
 
+
+
+
         <button id="spin-button" class="spin-button">SPIN TO WIN</button>
+
+
+
+
+
+
+        <div class="contest-body">
+
+
+            <!-- Contest Participation Steps -->
+            <div class="steps">
+
+                <!-- Reward Condition 1 (Rs 1,000 Cash Voucher) -->
+                <div class="reward-condition">
+                    <h4>Rs. 1,000 Cash Voucher:</h4>
+                    <p>Follow the steps above to receive a Rs. 1,000 cash voucher! It's that simple.</p>
+
+
+                    <ul>
+                        <li><strong>Download the app:</strong> Get the app from the App Store or Google Play.</li>
+                        <li><strong>Sign up as a new user:</strong> Create your account and enjoy the benefits.</li>
+                    </ul>
+                </div>
+
+                <!-- Reward Condition 2 (Rs 3,000 Cash Voucher) -->
+                <div class="reward-condition">
+                    <h4>Rs. 3,000 Cash Voucher (Second Spin):</h4>
+                    <p>If you're spinning for the second time, you must complete an additional task:</p>
+                    <ul>
+                        <li>Refer 10 new users: Get 10 users to download and sign up on the Aahaas app. Ensure they are
+                            new
+                            users and their accounts are verified.</li>
+                        <li>Once completed, you can claim your Rs. 3,000 cash voucher instantly!</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="#" title="Facebook">📱</a>
+                <a href="#" title="Instagram">📸</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+        </div>
+
 
         <!-- Win Popup -->
         <div class="popup" id="win-popup">
@@ -356,6 +458,7 @@
                     { fillStyle: '#E74C3C', text: 'No Chance' },     // Red
                     { fillStyle: '#F1C40F', text: 'LKR 500' },       // Yellow
                     { fillStyle: '#E67E22', text: 'LKR 1000' },      // Orange
+
                     { fillStyle: '#3498DB', text: 'Spin Again' },    // Blue
                     { fillStyle: '#9B59B6', text: 'LKR 250' },       // Purple
                     { fillStyle: '#27AE60', text: 'LKR 100' },       // Green
@@ -370,7 +473,7 @@
                 outerRadius: 180,
                 animation: {
                     type: 'spinToStop',
-                    duration: 4,
+                    duration: 6,
                     spins: 10,
                     callbackFinished: alertPrize
                 },
