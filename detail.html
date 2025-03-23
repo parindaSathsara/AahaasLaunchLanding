@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giveaway Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('assets/logo_monogram.png');
+            background-repeat: repeat;
+            background-size: 200px;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .detail-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .time-badge {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            font-weight: 600;
+        }
+
+        .raffle {
+            background-color: #e74c3c;
+        }
+
+        .referral {
+            background-color: #e74c3c;
+        }
+
+        .detail-content {
+            padding: 25px;
+        }
+
+        .detail-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .detail-description {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .detail-qualification {
+            font-size: 1.1rem;
+            color: #95a5a6;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h3 {
+            font-size: 1.3rem;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        .detail-section p {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .detail-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #7f8c8d;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bdc3c7;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px 0;
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="detail-card" id="promo-details">
+            <!-- Content will be dynamically populated based on URL parameter -->
+        </div>
+
+        <!-- <div class="button-group">
+            <a href="index.html" class="btn btn-secondary">← Back to Giveaways</a>
+            <a href="#" class="btn btn-primary" id="participate-btn">Participate Now</a>
+        </div> -->
+
+        <div class="button-group">
+            <a href="index.html" class="btn btn-secondary">← Back to Giveaways</a>
+            <!-- <a href="#" class="btn btn-primary" id="participate-btn">Participate Now</a> -->
+        </div>
+
+
+    </div>
+
+    <script>
+        // Get promo parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const promoId = urlParams.get('promo');
+
+        // Promotion data - this would typically come from a database
+        const promotions = {
+            'indian-summer': {
+                title: 'Indian Summer Restaurant Vouchers',
+                image: 'https://indiansummer.lk/wp-content/uploads/2023/01/dsc_0565-2048x1365-1-980x653.jpg.webp',
+                time: '11:00 AM',
+                description: '10 prizes worth Rs 2,500 each up for grabs!',
+                qualification: 'Qualify by referring app to 10 friends',
+                type: 'referral',
+                details: 'Experience authentic Indian cuisine with these exclusive packages. Each package includes a meal for two with appetizers, main courses, and desserts.',
+                howToParticipate: 'Share your referral code with friends and family. Once 10 people sign up using your code, you\'ll automatically be entered into the draw.',
+                whatYouGet: [
+                    'A voucher worth Rs 2,500',
+
+                    'Can be used at any Indian Summer location'
+                ]
+            },
+            'villa-wadduwa': {
+                title: 'One-Day Outing to Villa Wadduwa',
+                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/148531143.jpg?k=bd213cdcdd8f445eba7589e706c9969b0b5505008de5e1753efc8a2fc9ce5603&o=&hp=1',
+                time: '12:00 PM',
+                description: 'Enjoy a luxurious day at this beautiful villa!',
+                qualification: 'Qualify by referring app to 20 new users',
+                type: 'referral',
+                details: 'Spend a day at the beautiful Villa Wadduwa. This beachfront property offers stunning views, a private pool, and excellent amenities for a perfect day out.',
+                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
+                whatYouGet: [
+                    'One-day access to Villa Wadduwa for up to 4 people',
+
+                    'Includes welcome drinks and snacks'
+                ]
+            },
+            'pine-tree-1': {
+                title: 'Adventure Package at Pine Tree',
+                image: 'assets/image.jpg',
+                time: '1:00 PM',
+                description: 'Experience thrilling adventures in nature!',
+                qualification: 'Qualify by referring app to 20 users',
+                type: 'referral',
+                details: 'The Pine Tree Adventure Package offers an exciting day filled with activities like zip-lining, rock climbing, hiking, and more in a beautiful natural setting.',
+                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
+                whatYouGet: [
+                    'Full-day adventure package for 2 people',
+                    'Includes all safety equipment'
+                ]
+            },
+            'thailand': {
+                title: 'Holiday to Thailand',
+                image: 'https://t4.ftcdn.net/jpg/00/82/51/39/360_F_82513951_zG8t1O1qY4rAWXh7gr4qbRKrxmfK9rYz.jpg',
+                time: '2:00 PM',
+                description: 'Win a dream vacation to Thailand!',
+                qualification: 'Raffle Draw - Everyone can participate',
+                type: 'raffle',
+                details: 'A 5-day, 4-night trip to Thailand, including airfare, accommodation, and selected activities. Experience the beautiful beaches, rich culture, and delicious cuisine of Thailand.',
+                howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
+                whatYouGet: [
+
+                    '4 nights accommodation in a 4-star hotel',
+                    'Airport transfers',
+                    'Daily breakfast'
+                ]
+            },
+            'malaysia': {
+                title: 'Holiday to Malaysia',
+                image: 'https://images.pexels.com/photos/67559/kuala-lumpur-petronas-twin-towers-malaysia-klcc-67559.jpeg?cs=srgb&dl=pexels-pixabay-67559.jpg&fm=jpg',
+                time: '5:00 PM',
+                description: 'Win an exciting trip to Malaysia!',
+                qualification: 'Raffle Draw - Everyone can participate',
+                type: 'raffle',
+                details: 'A 4-day, 3-night trip to Malaysia, including airfare, accommodation in Kuala Lumpur, and a city tour. Experience the vibrant city life, cultural diversity, and famous landmarks.',
+                howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
+                whatYouGet: [
+
+                    '3 nights accommodation in central Kuala Lumpur',
+                    'Half-day city tour',
+                    'Daily breakfast'
+                ]
+            },
+            'villa-induruwa': {
+                title: 'One-Day at Villa 700 Induruwa',
+                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/161121094.jpg?k=48d1cb3c838912c6dee7ef0215862eae17a2fd346a829422293ee0a46a2e47c0&o=&hp=1',
+                time: '6:00 PM',
+                description: 'Relax at this gorgeous beachside villa!',
+                qualification: 'Qualify by referring app to 20 people',
+                type: 'referral',
+                details: 'Enjoy a day at the stunning Villa 700 in Induruwa. This beachfront property features a private pool, direct beach access, and beautiful garden spaces for a perfect relaxing day.',
+                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
+                whatYouGet: [
+                    'One-day access to Villa 700 for up to 6 people',
+
+                    'Includes access to all villa amenities'
+                ]
+            },
+            'pine-tree-2': {
+                title: 'Adventure Package at Pine Tree',
+                image: 'assets/image.jpg',
+                time: '7:00 PM',
+                description: '',
+                qualification: 'Qualify by referring app to 20 users',
+                type: 'referral',
+                details: 'Another chance to win the Pine Tree Adventure Package! Enjoy activities like zip-lining, rock climbing, hiking, and more in a beautiful natural setting.',
+                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
+                whatYouGet: [
+                    'Full-day adventure package for 2 people',
+                    'Includes all safety equipment',
+                    'Complimentary lunch and refreshments'
+                ]
+            },
+            'itc-colombo': {
+                title: 'One Night at ITC Colombo',
+                image: 'https://propertyguide-store.s3.ap-southeast-1.amazonaws.com/ikman/ITC_Ratnadipa_d17b4e8ccd.jpg',
+                time: '8:00 PM',
+                description: 'Enjoy luxury at its finest in Colombo!',
+                qualification: 'Raffle Draw - Everyone can participate',
+                type: 'raffle',
+                details: 'Experience a night of luxury at the prestigious ITC Colombo. Enjoy world-class amenities, exceptional service, and fine dining in this 5-star hotel in the heart of Colombo.',
+                howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
+                whatYouGet: [
+                    'One night stay in a Deluxe Room for 2 people',
+                    'Complimentary breakfast',
+                    'Access to hotel amenities including pool and fitness center',
+
+                ]
+            },
+            'dubai': {
+                title: 'Holiday to Dubai',
+                image: 'https://wallpapercat.com/w/full/0/6/9/274793-2560x1600-desktop-hd-dubai-background-image.jpg',
+                time: '9:00 PM',
+                description: 'Win a spectacular trip to Dubai!',
+                qualification: 'Raffle Draw - Everyone can participate',
+                type: 'raffle',
+                details: 'A 5-day, 4-night trip to Dubai, including airfare, accommodation, and a desert safari. Experience the stunning architecture, luxury shopping, and unique desert landscape of Dubai.',
+                howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
+                whatYouGet: [
+
+
+                    'Desert safari experience',
+                    'Daily breakfast',
+                    'Airport transfers'
+                ]
+            }
+        };
+
+        // Function to populate the details
+        function populatePromoDetails() {
+            const detailsContainer = document.getElementById('promo-details');
+
+            if (promoId && promotions[promoId]) {
+                const promo = promotions[promoId];
+
+                // Create HTML content
+                const content = `
+                    <div class="detail-image" style="background-image: url('${promo.image}');">
+                        <span class="time-badge ${promo.type}">${promo.time}</span>
+                    </div>
+                    <div class="detail-content">
+                        <h2 class="detail-title">${promo.title}</h2>
+                        <p class="detail-description">${promo.description}</p>
+                        <p class="detail-qualification">${promo.qualification}</p>
+                        
+                        <div class="detail-section">
+                            <h3>About the Prize</h3>
+                            <p>${promo.details}</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h3>How to Participate</h3>
+                            <p>${promo.howToParticipate}</p>
+                        </div>
+                        
+                  
+                    </div>
+                `;
+
+                detailsContainer.innerHTML = content;
+            } else {
+                detailsContainer.innerHTML = `
+                    <div class="detail-content">
+                        <h2 class="detail-title">Promotion Not Found</h2>
+                        <p>Sorry, the requested promotion could not be found. Please return to the giveaway page.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Run when page loads
+        window.onload = populatePromoDetails;
+
+        // Set up participate button
+        document.getElementById('participate-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (promoId && promotions[promoId]) {
+                const promo = promotions[promoId];
+                if (promo.type === 'raffle') {
+                    alert('You are already entered in this raffle draw! The winner will be announced after the draw time.');
+                } else {
+                    alert('Start referring friends to qualify for this prize! Share your referral code with friends and family.');
+                }
+            } else {
+                alert('Promotion not found. Please return to the giveaway page.');
+            }
+        });
+    </script>
+</body>
+
+</html>
