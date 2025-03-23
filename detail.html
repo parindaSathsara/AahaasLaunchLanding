@@ -192,6 +192,54 @@
             border-radius: 5px;
         }
 
+        .download-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .download-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .download-content {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        .store-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .store-button {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .store-button:hover {
+            transform: scale(1.05);
+        }
+
+        .store-button img {
+            height: 50px;
+        }
+
         @media (max-width: 768px) {
             .button-group {
                 flex-direction: column;
@@ -215,6 +263,26 @@
         <div class="button-group">
             <a href="index.html" class="btn btn-secondary">← Back to Giveaways</a>
             <!-- <a href="#" class="btn btn-primary" id="participate-btn">Participate Now</a> -->
+        </div>
+
+        <div class="download-section">
+            <h2 class="download-title">Download Our App to Participate!</h2>
+            <div class="download-content">
+                <div>
+                    <img src="assets/qr.png" alt="Download App QR Code" class="qr-code">
+                </div>
+                <div class="store-buttons">
+                    <a href="https://apps.apple.com/lk/app/aahaas-lifestyle-travel-app/id6450589764"
+                        class="store-button" target="_blank">
+                        <img src="assets/appstore.png" alt="Download on App Store">
+                    </a>
+
+                    <a href="https://play.google.com/store/apps/details?id=com.aahaastech.aahaas&hl=en&pli=1"
+                        class="store-button" target="_blank">
+                        <img src="assets/androidstore.png" alt="Get it on Google Play">
+                    </a>
+                </div>
+            </div>
         </div>
 
         <footer>
