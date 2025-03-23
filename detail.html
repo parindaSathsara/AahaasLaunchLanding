@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giveaway Details</title>
+    <title>Aahaas Giveaway Details</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('assets/logo_monogram.png');
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('assets/logo_monogram.png');
             background-repeat: repeat;
             background-size: 200px;
             background-position: center;
@@ -202,22 +202,28 @@
 
 <body>
     <div class="container">
+        <!-- <header>
+            <img src="assets/logo.png" alt="Aahaas Logo" class="logo">
+            <h1>Aahaas Giveaways</h1>
+            <p class="subtitle">Win Exciting Experiences!</p>
+        </header> -->
 
         <div class="detail-card" id="promo-details">
             <!-- Content will be dynamically populated based on URL parameter -->
         </div>
-
-        <!-- <div class="button-group">
-            <a href="index.html" class="btn btn-secondary">← Back to Giveaways</a>
-            <a href="#" class="btn btn-primary" id="participate-btn">Participate Now</a>
-        </div> -->
 
         <div class="button-group">
             <a href="index.html" class="btn btn-secondary">← Back to Giveaways</a>
             <!-- <a href="#" class="btn btn-primary" id="participate-btn">Participate Now</a> -->
         </div>
 
-
+        <footer>
+            <p>© 2024 Aahaas. All rights reserved.</p>
+            <div class="disclaimer">
+                <p>All prizes are subject to availability and terms & conditions. Prior reservations required where
+                    applicable.</p>
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -225,8 +231,84 @@
         const urlParams = new URLSearchParams(window.location.search);
         const promoId = urlParams.get('promo');
 
-        // Promotion data - this would typically come from a database
+        // Promotion data - updated from winner letters
         const promotions = {
+            'villa-wadduwa': {
+                title: 'Complimentary Day Out at The Villas Wadduwa',
+                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/148531143.jpg?k=bd213cdcdd8f445eba7589e706c9969b0b5505008de5e1753efc8a2fc9ce5603&o=&hp=1',
+                time: '12:00 PM',
+                description: 'Experience luxury at The Villas Wadduwa!',
+                qualification: 'Raffle Draw Winner',
+                type: 'raffle',
+                details: 'Enjoy a serene day at the luxurious The Villas Wadduwa. This package includes various amenities for a perfect day out by the beach.',
+                howToParticipate: 'Winners have been selected! The voucher is valid for redemption from 17th April 2024 to 30th June 2024. Prior reservation is required.',
+                whatYouGet: [
+                    'Welcome drink upon arrival',
+                    'Lunch (A La Carte basis)',
+                    'Swimming pool access',
+                    'Beach access',
+                    'Evening tea or coffee served with one piece of cake'
+                ],
+                validUntil: '30th June 2024',
+                contactInfo: 'For reservations: 0112 352 400 or Info@aahaas.com'
+            },
+            'villa-induruwa': {
+                title: 'Complimentary Day Out at Villa 700 Induruwa',
+                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/161121094.jpg?k=48d1cb3c838912c6dee7ef0215862eae17a2fd346a829422293ee0a46a2e47c0&o=&hp=1',
+                time: '6:00 PM',
+                description: 'Relax at the serene Villa 700 Induruwa!',
+                qualification: 'Raffle Draw Winner',
+                type: 'raffle',
+                details: 'Enjoy a day at the serene and luxurious Villa 700 Induruwa with beach access and premium amenities.',
+                howToParticipate: 'Winners have been selected! The voucher is valid for redemption from 17th April 2024 to 30th June 2024. Prior reservation is required.',
+                whatYouGet: [
+                    'Welcome drink upon arrival',
+                    'Lunch (A La Carte basis)',
+                    'Swimming pool access',
+                    'Beach access',
+                    'Evening tea or coffee served with one piece of cake'
+                ],
+                validUntil: '30th June 2024',
+                contactInfo: 'For reservations: 0112 352 400 or Info@aahaas.com'
+            },
+            'pine-tree-1': {
+                title: 'Tango Adventure Package at Pine Tree',
+                image: 'assets/image.jpg',
+                time: '1:00 PM',
+                description: 'Experience thrilling adventures in nature!',
+                qualification: 'Raffle Draw Winner',
+                type: 'raffle',
+                details: 'A complete adventure package at Pine Tree Adventure featuring various activities for thrill-seekers.',
+                howToParticipate: 'Winners have been selected! This complimentary package is valid until 30th April 2025. Prior reservation is recommended.',
+                whatYouGet: [
+                    'Mini Zip Line', 'Log Walk', 'Log Ladder', 'Toddy Tapper',
+                    'Rope Balancing', 'Swinging Log Cross', 'W Walk', 'Sky Cycling',
+                    'Unparalleled Frames', 'Maze Walk', 'Cable Boarding', 'Log Stairway',
+                    'Dwarf\'s Ladder', 'Swinging Pole Crossing', 'Burma Bridge', 'Tarzan Rope Jump'
+                ],
+                validUntil: '30th April 2025',
+                voucherCode: '017',
+                contactInfo: 'For inquiries: 0112 352 400 or Info@aahaas.com'
+            },
+            'pine-tree-2': {
+                title: 'Tango Adventure Package at Pine Tree',
+                image: 'assets/image.jpg',
+                time: '7:00 PM',
+                description: 'Another chance to win thrilling adventures!',
+                qualification: 'Raffle Draw Winner',
+                type: 'raffle',
+                details: 'A complete adventure package at Pine Tree Adventure featuring various activities for thrill-seekers.',
+                howToParticipate: 'Winners have been selected! This complimentary package is valid until 30th April 2025. Prior reservation is recommended.',
+                whatYouGet: [
+                    'Mini Zip Line', 'Log Walk', 'Log Ladder', 'Toddy Tapper',
+                    'Rope Balancing', 'Swinging Log Cross', 'W Walk', 'Sky Cycling',
+                    'Unparalleled Frames', 'Maze Walk', 'Cable Boarding', 'Log Stairway',
+                    'Dwarf\'s Ladder', 'Swinging Pole Crossing', 'Burma Bridge', 'Tarzan Rope Jump'
+                ],
+                validUntil: '30th April 2025',
+                voucherCode: '018',
+                contactInfo: 'For inquiries: 0112 352 400 or Info@aahaas.com'
+            },
             'indian-summer': {
                 title: 'Indian Summer Restaurant Vouchers',
                 image: 'https://indiansummer.lk/wp-content/uploads/2023/01/dsc_0565-2048x1365-1-980x653.jpg.webp',
@@ -238,37 +320,7 @@
                 howToParticipate: 'Share your referral code with friends and family. Once 10 people sign up using your code, you\'ll automatically be entered into the draw.',
                 whatYouGet: [
                     'A voucher worth Rs 2,500',
-
                     'Can be used at any Indian Summer location'
-                ]
-            },
-            'villa-wadduwa': {
-                title: 'One-Day Outing to Villa Wadduwa',
-                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/148531143.jpg?k=bd213cdcdd8f445eba7589e706c9969b0b5505008de5e1753efc8a2fc9ce5603&o=&hp=1',
-                time: '12:00 PM',
-                description: 'Enjoy a luxurious day at this beautiful villa!',
-                qualification: 'Qualify by referring app to 20 new users',
-                type: 'referral',
-                details: 'Spend a day at the beautiful Villa Wadduwa. This beachfront property offers stunning views, a private pool, and excellent amenities for a perfect day out.',
-                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
-                whatYouGet: [
-                    'One-day access to Villa Wadduwa for up to 4 people',
-
-                    'Includes welcome drinks and snacks'
-                ]
-            },
-            'pine-tree-1': {
-                title: 'Adventure Package at Pine Tree',
-                image: 'assets/image.jpg',
-                time: '1:00 PM',
-                description: 'Experience thrilling adventures in nature!',
-                qualification: 'Qualify by referring app to 20 users',
-                type: 'referral',
-                details: 'The Pine Tree Adventure Package offers an exciting day filled with activities like zip-lining, rock climbing, hiking, and more in a beautiful natural setting.',
-                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
-                whatYouGet: [
-                    'Full-day adventure package for 2 people',
-                    'Includes all safety equipment'
                 ]
             },
             'thailand': {
@@ -281,7 +333,6 @@
                 details: 'A 5-day, 4-night trip to Thailand, including airfare, accommodation, and selected activities. Experience the beautiful beaches, rich culture, and delicious cuisine of Thailand.',
                 howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
                 whatYouGet: [
-
                     '4 nights accommodation in a 4-star hotel',
                     'Airport transfers',
                     'Daily breakfast'
@@ -297,40 +348,9 @@
                 details: 'A 4-day, 3-night trip to Malaysia, including airfare, accommodation in Kuala Lumpur, and a city tour. Experience the vibrant city life, cultural diversity, and famous landmarks.',
                 howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
                 whatYouGet: [
-
                     '3 nights accommodation in central Kuala Lumpur',
                     'Half-day city tour',
                     'Daily breakfast'
-                ]
-            },
-            'villa-induruwa': {
-                title: 'One-Day at Villa 700 Induruwa',
-                image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/161121094.jpg?k=48d1cb3c838912c6dee7ef0215862eae17a2fd346a829422293ee0a46a2e47c0&o=&hp=1',
-                time: '6:00 PM',
-                description: 'Relax at this gorgeous beachside villa!',
-                qualification: 'Qualify by referring app to 20 people',
-                type: 'referral',
-                details: 'Enjoy a day at the stunning Villa 700 in Induruwa. This beachfront property features a private pool, direct beach access, and beautiful garden spaces for a perfect relaxing day.',
-                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
-                whatYouGet: [
-                    'One-day access to Villa 700 for up to 6 people',
-
-                    'Includes access to all villa amenities'
-                ]
-            },
-            'pine-tree-2': {
-                title: 'Adventure Package at Pine Tree',
-                image: 'assets/image.jpg',
-                time: '7:00 PM',
-                description: '',
-                qualification: 'Qualify by referring app to 20 users',
-                type: 'referral',
-                details: 'Another chance to win the Pine Tree Adventure Package! Enjoy activities like zip-lining, rock climbing, hiking, and more in a beautiful natural setting.',
-                howToParticipate: 'Share your referral code with friends and family. Once 20 people sign up using your code, you\'ll automatically be entered into the draw.',
-                whatYouGet: [
-                    'Full-day adventure package for 2 people',
-                    'Includes all safety equipment',
-                    'Complimentary lunch and refreshments'
                 ]
             },
             'itc-colombo': {
@@ -345,8 +365,7 @@
                 whatYouGet: [
                     'One night stay in a Deluxe Room for 2 people',
                     'Complimentary breakfast',
-                    'Access to hotel amenities including pool and fitness center',
-
+                    'Access to hotel amenities including pool and fitness center'
                 ]
             },
             'dubai': {
@@ -359,8 +378,6 @@
                 details: 'A 5-day, 4-night trip to Dubai, including airfare, accommodation, and a desert safari. Experience the stunning architecture, luxury shopping, and unique desert landscape of Dubai.',
                 howToParticipate: 'All app users are automatically entered into this raffle draw. No additional action required!',
                 whatYouGet: [
-
-
                     'Desert safari experience',
                     'Daily breakfast',
                     'Airport transfers'
@@ -376,7 +393,7 @@
                 const promo = promotions[promoId];
 
                 // Create HTML content
-                const content = `
+                let content = `
                     <div class="detail-image" style="background-image: url('${promo.image}');">
                         <span class="time-badge ${promo.type}">${promo.time}</span>
                     </div>
@@ -395,11 +412,60 @@
                             <p>${promo.howToParticipate}</p>
                         </div>
                         
-                  
-                    </div>
+                        <div class="detail-section">
+                            <h3>What You Get</h3>
+                            <ul>
                 `;
 
+                // Add what you get items
+                promo.whatYouGet.forEach(item => {
+                    content += `<li>${item}</li>`;
+                });
+
+                content += `
+                            </ul>
+                        </div>
+                `;
+
+                // Add validity info if available
+                if (promo.validUntil) {
+                    content += `
+                        <div class="detail-section">
+                            <h3>Valid Until</h3>
+                            <p>${promo.validUntil}</p>
+                        </div>
+                    `;
+                }
+
+                // Add voucher code if available
+                if (promo.voucherCode) {
+                    content += `
+                        <div class="detail-section">
+                            <h3>Voucher Code</h3>
+                            <p>${promo.voucherCode}</p>
+                        </div>
+                    `;
+                }
+
+                // Add contact info if available
+                if (promo.contactInfo) {
+                    content += `
+                        <div class="detail-section">
+                            <h3>Contact Information</h3>
+                            <p>${promo.contactInfo}</p>
+                        </div>
+                    `;
+                }
+
+                content += `</div>`;
                 detailsContainer.innerHTML = content;
+
+                // Update button text based on promo type
+                const participateBtn = document.getElementById('participate-btn');
+                if (promo.type === 'raffle' && promo.qualification.includes('Winner')) {
+                    participateBtn.textContent = "Winners Announced";
+                    participateBtn.style.backgroundColor = "#27ae60";
+                }
             } else {
                 detailsContainer.innerHTML = `
                     <div class="detail-content">
@@ -418,7 +484,9 @@
             e.preventDefault();
             if (promoId && promotions[promoId]) {
                 const promo = promotions[promoId];
-                if (promo.type === 'raffle') {
+                if (promo.type === 'raffle' && promo.qualification.includes('Winner')) {
+                    alert('Winners have already been announced for this promotion. Check if you\'re one of the lucky winners!');
+                } else if (promo.type === 'raffle') {
                     alert('You are already entered in this raffle draw! The winner will be announced after the draw time.');
                 } else {
                     alert('Start referring friends to qualify for this prize! Share your referral code with friends and family.');
